@@ -1,0 +1,6 @@
+{
+  "name": "Secret Santa App in Node",
+  "description": "A barebones Node.js app using Express 4",
+  "repository": "https://github.com/wickyvinn/secret-santa",
+  "keywords": ["node", "express", "static"]
+}
