@@ -3,10 +3,10 @@
   <head></head>
   <body>
     <div class="container">
-      <form>
-        <input type="text" placeholder="NAME">
-        <input type="email" placeholder="EMAIL">
-	<p><button id="poop" type="submit">Get Secretive</button></p>
+      <form action="/submit" method="POST">
+        <input name="name" type="text" placeholder="NAME">
+        <input name="email" type="email" placeholder="EMAIL">
+	<button id="submit" type="submit">Get Secretive</button>
       </form>
     </div>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>  

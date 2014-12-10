@@ -1,5 +1,9 @@
 var express = require('express')
+var bodyParser = require('body-parser')
 var app = express()
+
+// for parsing application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Set port, heroku style
 // Run locally: foreman start web
@@ -14,6 +18,11 @@ app.set('view engine', 'ejs');
 
 app.get('/', function(request, response) {
   response.render('index.html');
+});
+
+app.post('/submit', function(request, response) {
+  console.log(request.body);  
+  response.send("submission successful");
 });
 
 app.listen(app.get('port'), function() {
