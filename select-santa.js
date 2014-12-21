@@ -1,5 +1,5 @@
 
-var  secretSanta = function(people) {
+var secretSanta = function(people) {
   this.people = people;
   this.redo   = false;
 }
@@ -45,9 +45,6 @@ secretSanta.prototype.validDraw = function () {
     for (p in this.people) santas.push(this.people[p]);
     var children = Array();
     for (p in this.people) children.push(this.people[p]);
-    // any way we can avoid this repetition? 
-    // var santas   = this.people;
-    // var children = this.people;
 
     var attemptToDraw = this.draw(children, santas);
     if(this.redo) {
