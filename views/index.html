@@ -1,13 +1,57 @@
 <!DOCTYPE html>
 <html>
-  <head></head>
+  <head>
+    <link href="css/main.css" rel="stylesheet" type="text/css">
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    
+    <script>
+
+      $(document).ready(function() {
+        var max_fields = 30; // maximum input boxes allowed
+        var wrapper = $(".input_fields_wrap"); // fields wrapper
+        var add_button = $(".add_field_button"); // add button id
+
+        var x = 1; // initial text box count
+        $(add_button).click(function(e) { // on add input button click
+          e.preventDefault();
+          if (x < max_fields) {
+            x++; // text box increment
+            $(wrapper).append('<div><input type="text" name="peeps[]" placeholder="name:email"/> <a href="#" class="remove_field">remove</a></div>'); // add input box
+          }
+        });
+
+        $(wrapper).on("click", ".remove_field", function(e) {  // user click on remove text 
+          e.preventDefault();
+          $(this).parent('div').remove(); x--;
+        })
+      });
+    
+    </script>
+  
+  </head>
+
   <body>
     <div class="container">
+
+      <p class="splash">ASSIGN SECRET SANTAS AMONG YOUR FRIENDS</p>
+
+      <p class="midtext">1. Enter in participants' names and emails
+        <br />2. Add a message
+      </p>
+
+      <p>Then, you're done!! <br />Secret santas will be assigned and sent anonymously via email.</p>
+      
+
+
+      <button class="add_field_button">add friend</button>  
       <form action="/submit" method="POST">
-        <textarea name="peeps">Add name:email,name:email...</textarea>
-	<button id="submit" type="submit">Get Secretive</button>
+        <p><div class="input_fields_wrap">
+          <div><input type="text" name="peeps[]" placeholder="name:email"></div>
+        </div></p>
+  	    <button id="submit" type="submit">get secretive</button>
       </form>
     </div>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>  
   </body>
+
 </html>

@@ -16,7 +16,8 @@ app.get('/', function(request, response) {
 });
 
 app.post('/submit', function(request, response) {
-  var namesEmailArray = request.body.peeps.split(","); // ["name1:email1", "name2:email2"]
+  var namesEmailArray = request.body.peeps; // ["name1:email1", "name2:email2"]
+  // if (namesEmailArray.length == 1) // throw an error
   var contactBook = {}; // {"name1":"email1", "name2":"email2"}
   var namesOnly = []; // ["name1", "name2"]
   for (person in namesEmailArray) {

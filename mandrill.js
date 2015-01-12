@@ -36,6 +36,7 @@ mandrill.prototype.sendEmails = function () {
 
     var childName = this.santaToChild[santa]
     var santasEmail = this.contactBook[santa]
+    // there should be a better way to do this, i.e. feed arguments into html file? 
     var finalEmailBody = emailBody.replace('{childName}', childName);
     var message = {
       "from_email": fromEmail,
