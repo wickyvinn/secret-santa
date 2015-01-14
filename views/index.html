@@ -2,6 +2,7 @@
 <html>
   <head>
     <link href="css/main.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Monoton|Open+Sans:800italic,800|Rokkitt|Maven+Pro' rel='stylesheet' type='text/css'>
     
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     
@@ -32,26 +33,39 @@
   </head>
 
   <body>
-    <div class="container">
 
-      <p class="splash">ASSIGN SECRET SANTAS AMONG YOUR FRIENDS</p>
+    <div class="splash">
+      <div class="splash_small">ASSIGN</div>
+      <div class="splash_big">SECRET SANTAS</div>
+      <div class="splash_small">WITH YOUR FRIENDS</div>
+    </div>
 
-      <p class="midtext">1. Enter in participants' names and emails
-        <br />2. Add a message
-      </p>
+    <div class="howto">
+      <div class="howto_big">Super easy. </div>
+      <div class="howto_box">
+        <div class="howto_small">
+        1.  Enter in everyone's names and emails
+        <br />2. Add whatever message you want
+        </div>
+      </div>
+      <div class="howto_big"><br />And you're done! </div>
+      <div class="howto_small" style="text-align: center"><br />Secret santas will be assigned and sent anonymously via email.</div>
+    </div>
 
-      <p>Then, you're done!! <br />Secret santas will be assigned and sent anonymously via email.</p>
+    <div class="form">
+      Here ya go!
       
-
-
       <button class="add_field_button">add friend</button>  
       <form action="/submit" method="POST">
-        <p><div class="input_fields_wrap">
+        <div class="input_fields_wrap">
           <div><input type="text" name="peeps[]" placeholder="name:email"></div>
-        </div></p>
-  	    <button id="submit" type="submit">get secretive</button>
+        </div>
+        <button id="submit" type="submit">get secretive</button>
       </form>
+    
     </div>
+
+    
   </body>
 
 </html>
