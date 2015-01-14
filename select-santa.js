@@ -1,46 +1,56 @@
-function randomIntGenerator(limit) {
-  return Math.floor(Math.random()*(limit))
+
+var secretSanta = function(people) {
+  this.people = people;
+  this.redo   = false;
+}
+ 
+secretSanta.prototype.randomIntGenerator = function(limit) {
+    return Math.floor(Math.random()*(limit))
 }
 
-function pickSanta (child, santasLeft) {
-  var len = santasLeft.length
-  var chosen_santa = santasLeft[randomIntGenerator(len)]
-  while (chosen_santa === child) {
+secretSanta.prototype.pickSanta = function(child, santasLeft) {
+    var len = santasLeft.length
+    var chosen_santa = santasLeft[this.randomIntGenerator(len)]
+    while (chosen_santa === child) {
 
-    // if the last person gets themselves, stop the process and catch it later
-    if (santasLeft.length === 1) {
-      redo = true;
-      break;
-    }
-    else {
-      chosen_santa = santasLeft[randomIntGenerator(len)];
-    }
-  };
-  return chosen_santa
-};
+      // if the last person gets themselves, stop the process and catch it later
+      if (santasLeft.length === 1) {
+        this.redo = true;
+        break;
+      }
+      else {
+        chosen_santa = santasLeft[this.randomIntGenerator(len)];
+      }
+    };
+ 
+   return chosen_santa
+}
 
-function draw (children, santasLeft) {
+secretSanta.prototype.draw = function(children, santasLeft) {
   childToSanta = []
-  redo = false
-  
+  this.redo = false
+ 
   for (i = 0; i < children.length; i++) {
-    santa = pickSanta(children[i], santasLeft)
+    santa = this.pickSanta(children[i], santasLeft)     
     childToSanta[children[i]] = santa
+    console.log("Children to Santa: ", childToSanta);
     santasLeft.splice(santasLeft.indexOf(santa), 1)
   };
 
   return childToSanta
+}
+
+secretSanta.prototype.validDraw = function () {
+    var santas = Array();
+    for (p in this.people) santas.push(this.people[p]);
+    var children = Array();
+    for (p in this.people) children.push(this.people[p]);
+
+    var attemptToDraw = this.draw(children, santas);
+    if(this.redo) {
+      return this.validDraw();
+    }
+    return attemptToDraw;
 };
 
-function validDraw() {
-
-  // any way we can avoid this repetition? 
-  var santas = Array("Vicky", "Kim", "Kathryn", "Timmy", "Jacob", "Brian")
-  var children = Array("Vicky", "Kim", "Kathryn", "Timmy", "Jacob", "Brian")
-
-  var attemptToDraw = draw(children, santas)
-    while (redo === true) validDraw()
-    return attemptToDraw
-};
-
-console.log(validDraw())
+module.exports = secretSanta;

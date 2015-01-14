@@ -1,14 +1,71 @@
 <!DOCTYPE html>
 <html>
-  <head></head>
+  <head>
+    <link href="css/main.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Monoton|Open+Sans:800italic,800|Rokkitt|Maven+Pro' rel='stylesheet' type='text/css'>
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    
+    <script>
+
+      $(document).ready(function() {
+        var max_fields = 30; // maximum input boxes allowed
+        var wrapper = $(".input_fields_wrap"); // fields wrapper
+        var add_button = $(".add_field_button"); // add button id
+
+        var x = 1; // initial text box count
+        $(add_button).click(function(e) { // on add input button click
+          e.preventDefault();
+          if (x < max_fields) {
+            x++; // text box increment
+            $(wrapper).append('<div><input type="text" name="peeps[]" placeholder="name:email"/> <a href="#" class="remove_field">remove</a></div>'); // add input box
+          }
+        });
+
+        $(wrapper).on("click", ".remove_field", function(e) {  // user click on remove text 
+          e.preventDefault();
+          $(this).parent('div').remove(); x--;
+        })
+      });
+    
+    </script>
+  
+  </head>
+
   <body>
-    <div class="container">
-      <form action="/submit" method="POST">
-        <input name="name" type="text" placeholder="NAME">
-        <input name="email" type="email" placeholder="EMAIL">
-	<button id="submit" type="submit">Get Secretive</button>
-      </form>
+
+    <div class="splash">
+      <div class="splash_small">ASSIGN</div>
+      <div class="splash_big">SECRET SANTAS</div>
+      <div class="splash_small">WITH YOUR FRIENDS</div>
     </div>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>  
+
+    <div class="howto">
+      <div class="howto_big">Super easy. </div>
+      <div class="howto_box">
+        <div class="howto_small">
+        1.  Enter in everyone's names and emails
+        <br />2. Add whatever message you want
+        </div>
+      </div>
+      <div class="howto_big"><br />And you're done! </div>
+      <div class="howto_small" style="text-align: center"><br />Secret santas will be assigned and sent anonymously via email.</div>
+    </div>
+
+    <div class="form">
+      Here ya go!
+      
+      <button class="add_field_button">add friend</button>  
+      <form action="/submit" method="POST">
+        <div class="input_fields_wrap">
+          <div><input type="text" name="peeps[]" placeholder="name:email"></div>
+        </div>
+        <button id="submit" type="submit">get secretive</button>
+      </form>
+    
+    </div>
+
+    
   </body>
+
 </html>
