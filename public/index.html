@@ -2,8 +2,8 @@
 <html>
   <head>
     <link href="css/main.css" rel="stylesheet" type="text/css">
-    <link href='http://fonts.googleapis.com/css?family=Monoton|Open+Sans:800italic,800|Rokkitt|Maven+Pro' rel='stylesheet' type='text/css'>
-    
+    <link href='http://fonts.googleapis.com/css?family=Monoton|Open+Sans:800italic,800|Rokkitt|Maven+Pro' rel='stylesheet' type='text/css'> 
+
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     
     <script>
@@ -18,7 +18,7 @@
           e.preventDefault();
           if (x < max_fields) {
             x++; // text box increment
-            $(wrapper).append('<div><input type="text" name="peeps[]" placeholder="name:email"/> <a href="#" class="remove_field">remove</a></div>'); // add input box
+            $(wrapper).append('<div><input type="text" name="peeps[]" placeholder="name:email" class="peep_input"/> <img src="img/white-minus.png" href="#" class="remove_field"></img></div>'); // add input box
           }
         });
 
@@ -37,7 +37,7 @@
     <div class="splash">
       <div class="splash_small">ASSIGN</div>
       <div class="splash_big">SECRET SANTAS</div>
-      <div class="splash_small">WITH YOUR FRIENDS</div>
+      <div class="splash_small">AMONGST YOUR FRIENDS</div>
     </div>
 
     <div class="howto">
@@ -49,22 +49,28 @@
         </div>
       </div>
       <div class="howto_big">And you're done! </div>
-      <div class="howto_small" style="text-align: center"><br />Secret santas will be assigned and sent anonymously via email.</div>
+      <div class="howto_small" style="text-align: center"><br />Secret santas will be assigned and sent via email.</div>
     </div>
 
-    <div class="form">
-      <p>Here ya go!</p>
-      
-      <button class="add_field_button">add friend</button>  
-      <form action="/submit" method="POST">
-        <div class="input_fields_wrap">
-          <div><input type="text" name="peeps[]" placeholder="name:email"></div>
-        </div>
-        <button id="submit" type="submit">get secretive</button>
+    <div id="form">
+      <p style="text-align:center">Enter in name and email, separated by a colon. <br />For example: "Santa:santa.claus@northpole.np" </p>
+      <div id="form_left">
+        <button class="add_field_button">ADD FRIEND</button>  
+      </div>
+      <div id="form_right">
+        <form action="/submit" method="POST">
+          <div class="input_fields_wrap">
+            <div><input type="text" name="peeps[]" placeholder="name:email" class="peep_input"></div>
+          </div>
+        <button class="submit_santa_button" id="submit" type="submit"/>SECRET SANTA TIME!</button>
       </form>
-    
+      </div>
     </div>
 
+    <div id="credits"> 
+      This <a class="credit_link" href="http://www.github.com/wickyvinn/secret-santa">secret santa tool</a> was made by <a href="http://www.github.com/wickyvinn" class="credit_link">wickyvinn</a> 
+      <br />Hosted by <a href="http://heroku.com" class="credit_link">Heroku</a>
+    </div>
     
   </body>
 

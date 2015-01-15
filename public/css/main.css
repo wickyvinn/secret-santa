@@ -53,21 +53,121 @@ body {
   letter-spacing: -1px;
 }
 
-.form {
-  padding: 120px 0 120px;
+#form {
+  padding: 120px 0 250px 0;
   background: linear-gradient(45deg, #66A366 0%, #006600 100%);
-  
   font-family: 'Rokkitt', serif;
   font-size: 20px;
   color: #FFFFFF;
-  text-align: center;
+}
+
+#form_left {
+  float: left;
+  width: 45%;
+  text-align: right;
+}
+
+#form_right {
+  margin-left: .5%;
+  float: right;
+  width: 54.5%
 }
 
 #input_fields_wrap {
-  text-align: start;
+  padding: 25px;
+  padding-left: 50px;
+}
+
+.add_field_button, .submit_santa_button {
+  background-color: #E60000;
+  -webkit-border-radius: 5px;
+  border-radius: 6px;
+  color: #FFFFFF;
+  font-family: helvetica;
+  font-size: 10px;
+  border: solid;
+  border-color: #FFFFFF;
+  padding: 10px 5px 10px 5px;
+}
+
+.add_field_button:hover, .submit_santa_button:hover {
+  background-color: #24248F;
+  -webkit-appearance: none;
+  -webkit-border-radius: 5px;
+  border-radius: 6px;
+  color: #FFFFFF;
+  font-family: helvetica;
+  font-size: 10px;
+  border: solid;
+  border-color: #FFFFFF;
+  padding: 10px 5px 10px 5px;
 }
 
 
+.remove_field {
+  vertical-align: middle;
+  max-height: 20px;
+  max-width: auto;
+  -webkit-transition: all .5s ease;
+  -moz-transition: all .5s ease;
+   -o-transition: all .5s ease;
+  -ms-transition: all .5s ease;
+  transition: all 1s ease;
+
+}
+
+.remove_field:hover {
+  max-height: 25px;
+  max-width: auto;
+}
+
+.peep_input {
+  -webkit-appearance: none;
+  -webkit-border-radius: 3px;
+  border-radius: 6px;
+  border: solid;
+  border-color: #FFFFFF;
+  font-family: helvetica;
+  font-size: 10px;
+  padding: 10px 5px 10px 5px;
+  color: #5a5a5a;
+  margin-bottom: 4px;
+  max-height: 10px;
+}
+
+#message_input {
+  -webkit-appearance: none;
+  -webkit-border-radius: 3px;
+  border-radius: 6px;
+  border: solid;
+  border-color: #FFFFFF;
+  font-family: helvetica;
+  font-size: 10px;
+  padding: 25px;
+  padding-left: 50px;
+  padding: 10px 5px 10px 5px;
+  color: #5a5a5a;
+  margin-bottom: 4px;
+}
+
+#credits {
+  padding: 100px 0 100px 0;
+  background: linear-gradient(45deg, #CCEBF5 0%,#FEFEFE 100%);
+  font-family: 'Rokkitt', serif;
+  font-size: 10px;
+  color: #5a5a5a;
+  vertical-align: center;
+  text-align: center;
+}
+
+.credit_link {
+  color: #FF0066;
+  text-decoration: none;
+}
+
+.credit_link:hover {
+  color: #24248F;
+}
 @font-face {
   font-family: wisdomScript;
   src: url("WisdomScript.otf") format("opentype");

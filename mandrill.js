@@ -56,11 +56,12 @@ mandrill.prototype.sendEmails = function () {
       this.result = result;
     }, function(e) {
       this.result = e.name
+      consolelog("error result: " + this.result)
     });
 
-    return this.result  
   };
-  
+
+  return this.result  
 };
 
 module.exports = mandrill; 
