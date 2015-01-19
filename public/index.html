@@ -5,31 +5,7 @@
     <link href='http://fonts.googleapis.com/css?family=Monoton|Open+Sans:800italic,800|Rokkitt|Maven+Pro' rel='stylesheet' type='text/css'> 
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    
-    <script>
-
-      $(document).ready(function() {
-        var max_fields = 30; // maximum input boxes allowed
-        var wrapper = $(".input_fields_wrap"); // fields wrapper
-        var add_button = $(".add_field_button"); // add button id
-
-        var x = 1; // initial text box count
-        $(add_button).click(function(e) { // on add input button click
-          e.preventDefault();
-          if (x < max_fields) {
-            x++; // text box increment
-            $(wrapper).append('<div><input type="text" name="peeps[]" placeholder="name:email" class="peep_input"/> <img src="img/white-minus.png" href="#" class="remove_field"></img></div>'); // add input box
-          }
-        });
-
-        $(wrapper).on("click", ".remove_field", function(e) {  // user click on remove text 
-          e.preventDefault();
-          $(this).parent('div').remove(); x--;
-        })
-      });
-    
-    </script>
-  
+      
   </head>
 
   <body>
@@ -53,18 +29,24 @@
     </div>
 
     <div id="form">
-      <p style="text-align:center">Enter in name and email, separated by a colon. <br />For example: "Santa:santa.claus@northpole.np" </p>
+      <p style="text-align:center">Enter in name and email, separated by a colon. 
+        <br />For example: "Santa:santa.claus@northpole.np" 
+      </p>
+      
       <div id="form_left">
         <button class="add_field_button">ADD FRIEND</button>  
       </div>
+      
       <div id="form_right">
-        <form action="/submit" method="POST">
+        <form class="multi-field-form" action="/submit" method="POST">
           <div class="input_fields_wrap">
             <div><input type="text" name="peeps[]" placeholder="name:email" class="peep_input"></div>
           </div>
-        <button class="submit_santa_button" id="submit" type="submit"/>SECRET SANTA TIME!</button>
-      </form>
+          <button class="submit_santa_button" id="submit" type="submit"/>SECRET SANTA TIME!</button>
+        </form>
+        <p class="validation_message"></p>
       </div>
+
     </div>
 
     <div id="credits"> 
@@ -73,5 +55,37 @@
     </div>
     
   </body>
+
+  <script>
+
+    $(document).ready(function() {
+      var max_fields = 30; // maximum input boxes allowed
+      var wrapper = $(".input_fields_wrap"); // fields wrapper
+      var add_button = $(".add_field_button"); // add button id
+
+      var x = 1; // initial text box count
+      $(add_button).click(function(e) { // on add input button click
+        e.preventDefault();
+        if (x < max_fields) {
+          x++; // text box increment
+          $(wrapper).append('<div><input type="text" name="peeps[]" placeholder="name:email" class="peep_input"/> <img src="img/white-minus.png" href="#" class="remove_field"></img></div>'); // add input box
+        }
+      });
+
+      $(wrapper).on("click", ".remove_field", function(e) {  // user click on remove text 
+        e.preventDefault();
+        $(this).parent('div').remove(); x--;
+      })
+    });
+  
+    $("form.multi-field-form").submit(function (event) {
+      var inputs = $("input[class=peep_input]");
+      var namesArray = inputs.map( function() { return $(this).val(); }).get();
+      if (Object.keys(namesArray).length > 1) return;
+      $(".validation_message").text( "Add a friend before submitting" ).show();
+      event.preventDefault();
+    });
+
+  </script>
 
 </html>

@@ -56,7 +56,7 @@ mandrill.prototype.sendEmails = function () {
       this.result = result;
     }, function(e) {
       this.result = e.name
-      consolelog("error result: " + this.result)
+      console.log("error result: " + this.result);
     });
 
   };
