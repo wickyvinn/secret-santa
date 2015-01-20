@@ -32,15 +32,10 @@ app.post('/submit', function(request, response) {
   var ss = new SantaSelector(namesOnly);
   var santaToChild = ss.validDraw();
   var md = new Mandrill(santaToChild, contactBook, emailSubject, emailBody);  
-  //var mandrillResponse = md.sendEmails();
+  var mandrillResponse = md.sendEmails();
 
-  var revealHtml = "Santa --> Recipient"
-  
-  for (santa in santaToChild) {
-    revealHtml += "<br /> " + santa + " --> " + santaToChild[santa] 
-  }
   response.render('finish.html', { santaToChild: santaToChild });
-  // response.render('finish.html', { revealHtml: JSON.stringify(revealHtml) });
+  
 
 });
 
