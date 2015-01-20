@@ -40,7 +40,9 @@
       <div id="form_right">
         <form class="multi-field-form" action="/submit" method="POST">
           <div class="input_fields_wrap">
-            <div><input type="text" name="peeps[]" placeholder="name:email" class="peep_input"></div>
+            <div>
+              <input type="text" name="peeps[]" placeholder="name:email" class="peep_input" pattern ="^([a-zA-Z0-9\._-])+:+([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$" required\>
+            </div>
           </div>
           <button class="submit_santa_button" id="submit" type="submit"/>SECRET SANTA TIME!</button>
         </form>
@@ -58,17 +60,21 @@
 
   <script>
 
+
+
+    //////////// dynamically add input for adding santas ////////////
+
     $(document).ready(function() {
-      var max_fields = 30; // maximum input boxes allowed
-      var wrapper = $(".input_fields_wrap"); // fields wrapper
-      var add_button = $(".add_field_button"); // add button id
+      var max_fields = 30; 
+      var wrapper = $(".input_fields_wrap");
+      var add_button = $(".add_field_button");
 
       var x = 1; // initial text box count
       $(add_button).click(function(e) { // on add input button click
         e.preventDefault();
         if (x < max_fields) {
           x++; // text box increment
-          $(wrapper).append('<div><input type="text" name="peeps[]" placeholder="name:email" class="peep_input"/> <img src="img/white-minus.png" href="#" class="remove_field"></img></div>'); // add input box
+          $(wrapper).append('<div><input type="text" name="peeps[]" placeholder="name:email" class="peep_input" pattern ="^([a-zA-Z0-9])+:+([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$" required/> <img src="img/white-minus.png" href="#" class="remove_field"></img></div>'); // add input box
         }
       });
 
@@ -78,6 +84,7 @@
       })
     });
   
+    //////////// validate that there are at least two inputs ////////////
     $("form.multi-field-form").submit(function (event) {
       var inputs = $("input[class=peep_input]");
       var namesArray = inputs.map( function() { return $(this).val(); }).get();
