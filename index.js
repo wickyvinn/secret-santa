@@ -35,7 +35,6 @@ app.post('/submit', function(request, response) {
   var mandrillResponse = md.sendEmails();
 
   response.render('finish.html', { santaToChild: santaToChild });
-  
 
 });
 
