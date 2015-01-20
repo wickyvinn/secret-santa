@@ -2,34 +2,8 @@
 <html>
   <head>
     <link href="css/main.css" rel="stylesheet" type="text/css">
-    <link href='http://fonts.googleapis.com/css?family=Monoton|Open+Sans:800italic,800|Rokkitt|Maven+Pro' rel='stylesheet' type='text/css'>
-    
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    
-    <script>
-
-      $(document).ready(function() {
-        var max_fields = 30; // maximum input boxes allowed
-        var wrapper = $(".input_fields_wrap"); // fields wrapper
-        var add_button = $(".add_field_button"); // add button id
-
-        var x = 1; // initial text box count
-        $(add_button).click(function(e) { // on add input button click
-          e.preventDefault();
-          if (x < max_fields) {
-            x++; // text box increment
-            $(wrapper).append('<div><input type="text" name="peeps[]" placeholder="name:email"/> <a href="#" class="remove_field">remove</a></div>'); // add input box
-          }
-        });
-
-        $(wrapper).on("click", ".remove_field", function(e) {  // user click on remove text 
-          e.preventDefault();
-          $(this).parent('div').remove(); x--;
-        })
-      });
-    
-    </script>
-  
+    <script src="js/jquery.min.js"></script>
+      
   </head>
 
   <body>
@@ -37,7 +11,7 @@
     <div class="splash">
       <div class="splash_small">ASSIGN</div>
       <div class="splash_big">SECRET SANTAS</div>
-      <div class="splash_small">WITH YOUR FRIENDS</div>
+      <div class="splash_small">AMONGST YOUR FRIENDS!</div>
     </div>
 
     <div class="howto">
@@ -49,23 +23,77 @@
         </div>
       </div>
       <div class="howto_big">And you're done! </div>
-      <div class="howto_small" style="text-align: center"><br />Secret santas will be assigned and sent anonymously via email.</div>
+      <div class="howto_small" style="text-align: center"><br />Secret santas will be assigned and sent via email.</div>
     </div>
 
-    <div class="form">
-      <p>Here ya go!</p>
+    <div id="form">
+      <p style="text-align:center">Enter in name and email, separated by a colon. 
+        <br />For example: "SantaClaus:santa.claus@northpole.np" 
+      </p>
       
-      <button class="add_field_button">add friend</button>  
-      <form action="/submit" method="POST">
-        <div class="input_fields_wrap">
-          <div><input type="text" name="peeps[]" placeholder="name:email"></div>
-        </div>
-        <button id="submit" type="submit">get secretive</button>
-      </form>
-    
+      <div id="form_left">
+        <button class="add_field_button">ADD FRIEND</button>  
+      </div>
+      
+      <div id="form_right">
+        <form class="multi-field-form" action="/submit" method="POST">
+          <div class="input_fields_wrap">
+            <div><textarea id="email_subject" name="email_subject" class="email_subject" rows="1" cols="40" placeholder="Email Subject" required></textarea></div>
+            <div><textarea id="email_body" name="email_body" class="email_body" rows="5" cols="40" placeholder="Email Body. Write it in HTML if you want - any formatting otherwise will not be saved. But if you do, leave out the <html> and <body> tags." required></textarea></div>
+            <hr>
+            <div>
+              <input type="text" name="peeps[]" placeholder="Friend:FriendEmail" class="peep_input" pattern ="^([a-zA-Z0-9\._-])+:+([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$" required />
+            </div>
+          </div>
+          <button class="submit_santa_button" id="submit" type="submit" style="margin-top: 4px" />SECRET SANTA TIME!</button>
+        </form>
+        <p class="validation_message"></p>
+      </div>
+
     </div>
 
+    <div id="credits"> 
+      This <a class="credit_link" href="http://www.github.com/wickyvinn/secret-santa">secret santa tool</a> was made by <a href="http://www.github.com/wickyvinn" class="credit_link">wickyvinn</a> 
+      <br />Hosted by <a href="http://heroku.com" class="credit_link">Heroku</a>
+    </div>
     
   </body>
+
+  <script>
+
+
+
+    //////////// dynamically add input for adding santas ////////////
+
+    $(document).ready(function() {
+      var max_fields = 30; 
+      var wrapper = $(".input_fields_wrap");
+      var add_button = $(".add_field_button");
+
+      var x = 1; // initial text box count
+      $(add_button).click(function(e) { // on add input button click
+        e.preventDefault();
+        if (x < max_fields) {
+          x++; // text box increment
+          $(wrapper).append('<div><input type="text" name="peeps[]" placeholder="Friend:FriendEmail" class="peep_input" pattern ="^([a-zA-Z0-9])+:+([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$" required/> <img src="img/white-minus.png" href="#" class="remove_field"></img></div>'); // add input box
+        }
+      });
+
+      $(wrapper).on("click", ".remove_field", function(e) {  // user click on remove text 
+        e.preventDefault();
+        $(this).parent('div').remove(); x--;
+      })
+    });
+  
+    //////////// validate that there are at least two inputs ////////////
+    $("form.multi-field-form").submit(function (event) {
+      var inputs = $("input[class=peep_input]");
+      var namesArray = inputs.map( function() { return $(this).val(); }).get();
+      if (Object.keys(namesArray).length > 1) return;
+      $(".validation_message").text( "Add a friend before submitting!" ).show();
+      event.preventDefault();
+    });
+
+  </script>
 
 </html>

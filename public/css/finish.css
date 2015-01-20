@@ -1,0 +1,39 @@
+body {
+  margin: 0;
+  background: linear-gradient(45deg, #CCEBF5 0%,#FEFEFE 100%);
+	font-family: Rokkitt;
+  font-size: 20px;
+  color: #5a5a5a;
+  vertical-align: center;
+  text-align: center;
+}
+
+.text {
+	padding: 150px 0 150px 0;
+}
+
+.reveal_button {
+  background-color: #FF0066;
+  -webkit-border-radius: 5px;
+  border-radius: 6px;
+  color: #FFFFFF;
+  font-family: helvetica;
+  font-size: 15px;
+  border: solid;
+  border-color: #FFFFFF;
+  padding: 10px 5px 10px 5px;
+}
+
+.reveal_button:hover {
+  background-color: #24248F;
+  -webkit-appearance: none;
+  -webkit-border-radius: 5px;
+  border-radius: 6px;
+  color: #FFFFFF;
+  font-family: helvetica;
+  font-size: 15px;
+  border: solid;
+  border-color: #FFFFFF;
+  padding: 10px 5px 10px 5px;
+}
+

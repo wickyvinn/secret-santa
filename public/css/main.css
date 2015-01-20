@@ -4,31 +4,31 @@ body {
 
 .splash {
   display: block;
-  padding: 120px 0 120px;
+  padding: 150px 0 150px;
   text-align: center;
   background: linear-gradient(45deg, #CCEBF5 0%,#FEFEFE 100%)
 }
 
 .splash_small {
-  font-family: 'Rokkitt', serif;
-  font-size: 40px;
+  font-family: 'Slabo';
+  font-size: 60px;
   text-shadow: 1px 1px #AED7BC;
   color: #5CAF78;
 }
 
 .splash_big {
   font-family: 'Monoton', cursive;
-  font-size: 70px;
+  font-size: 100px;
   color: #E60000;
 }
 
 .howto {
-  padding: 120px 0 120px;
+  padding: 150px 0 150px;
 }
 
 .howto_big {
-  font-family: wisdomScript;
-  font-size: 40px;
+  font-family: WisdomScript;
+  font-size: 60px;
   font-weight: 200px;
   letter-spacing: -1px;
   color: #5a5a5a; 
@@ -36,8 +36,8 @@ body {
 }
 
 .howto_box {
-  margin-left: 230px;
-  margin-right: 230px;
+  margin-left: 300px;
+  margin-right: 300px;
   margin-top: 50px;
   margin-bottom: 50px;
   border: 5px solid #5a5a5a;
@@ -47,28 +47,152 @@ body {
 
 .howto_small {
   font-family: 'Rokkitt', serif;
-  font-size: 20px;
+  font-size: 30px;
   font-weight: 200px;
   color: #5a5a5a;
   letter-spacing: -1px;
 }
 
-.form {
-  padding: 120px 0 120px;
+#form {
+  padding: 150px 0 150px;
+  overflow: auto;
   background: linear-gradient(45deg, #66A366 0%, #006600 100%);
-  
   font-family: 'Rokkitt', serif;
-  font-size: 20px;
+  font-size: 30px;
   color: #FFFFFF;
-  text-align: center;
+}
+
+#form_left {
+  float: left;
+  width: 45%;
+  text-align: right;
+}
+
+#form_right {
+  margin-left: .5%;
+  float: right;
+  width: 54.5%
 }
 
 #input_fields_wrap {
-  text-align: start;
+  padding: 25px;
+  padding-left: 50px;
+}
+
+.add_field_button, .submit_santa_button {
+  background-color: #E60000;
+  -webkit-border-radius: 5px;
+  border-radius: 6px;
+  color: #FFFFFF;
+  font-family: helvetica;
+  font-size: 15px;
+  border: solid;
+  border-color: #FFFFFF;
+  padding: 10px 5px 10px 5px;
+}
+
+.add_field_button:hover, .submit_santa_button:hover {
+  background-color: #24248F;
+  -webkit-appearance: none;
+  -webkit-border-radius: 5px;
+  border-radius: 6px;
+  color: #FFFFFF;
+  font-family: helvetica;
+  font-size: 15px;
+  border: solid;
+  border-color: #FFFFFF;
+  padding: 10px 5px 10px 5px;
 }
 
 
+.remove_field {
+  vertical-align: middle;
+  max-height: 20px;
+  max-width: auto;
+  -webkit-transition: all .5s ease;
+  -moz-transition: all .5s ease;
+   -o-transition: all .5s ease;
+  -ms-transition: all .5s ease;
+  transition: all 1s ease;
+
+}
+
+.remove_field:hover {
+  max-height: 25px;
+  max-width: auto;
+}
+
+.peep_input {
+  -webkit-appearance: none;
+  -webkit-border-radius: 3px;
+  border-radius: 6px;
+  border: solid;
+  border-color: #FFFFFF;
+  font-family: helvetica;
+  font-size: 15px;
+  padding: 10px 5px 10px 5px;
+  color: #5a5a5a;
+  margin-bottom: 4px;
+  max-height: 10px;
+}
+
+.email_body, .email_subject {
+  -webkit-appearance: none;
+  -webkit-border-radius: 3px;
+  border-radius: 6px;
+  border: solid;
+  border-color: #FFFFFF;
+  font-family: helvetica;
+  font-size: 15px;
+  padding: 10px 5px 10px 5px;
+  color: #5a5a5a;
+}
+
+.validation_message {
+  font-size: 13px;
+}
+
+#credits {
+  padding: 100px 0 100px 0;
+  background: linear-gradient(45deg, #CCEBF5 0%,#FEFEFE 100%);
+  font-family: 'Rokkitt', serif;
+  font-size: 15px;
+  color: #5a5a5a;
+  vertical-align: center;
+  text-align: center;
+}
+
+.credit_link {
+  color: #FF0066;
+  text-decoration: none;
+}
+
+.credit_link:hover {
+  color: #24248F;
+}
+
+hr {
+  width: 312px;
+  text-align: left;
+  margin: -1px 0 8px 0;
+}
+
 @font-face {
-  font-family: wisdomScript;
+  font-family: "Slabo";
+  src: url("Slabo27px-Regular.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "Rokkitt";
+  src: url("Rokkitt-Regular.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: "Monoton";
+  src: url("Monoton-Regular.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: WisdomScript;
   src: url("WisdomScript.otf") format("opentype");
 }
