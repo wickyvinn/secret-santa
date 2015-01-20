@@ -16,8 +16,9 @@ app.get('/', function(request, response) {
 });
 
 app.post('/submit', function(request, response) {
+  var emailSubject = request.body.email_subject;
+  var emailBody = request.body.email_body;
   var namesEmailArray = request.body.peeps; // ["name1:email1", "name2:email2"]
-  // if (namesEmailArray.length == 1) // throw an error
   var contactBook = {}; // {"name1":"email1", "name2":"email2"}
   var namesOnly = []; // ["name1", "name2"]
   for (person in namesEmailArray) {
@@ -30,10 +31,12 @@ app.post('/submit', function(request, response) {
 
   var ss = new SantaSelector(namesOnly);
   var santaToChild = ss.validDraw();
-  var md = new Mandrill(santaToChild, contactBook);  
+  var md = new Mandrill(santaToChild, contactBook, emailSubject, emailBody);  
   var mandrillResponse = md.sendEmails();
-  response.send(mandrillResponse)
-  
+
+  response.render('user', { data: santaToChild }, function(err, html) {
+  });
+
 });
 
 app.listen(app.get('port'), function() {

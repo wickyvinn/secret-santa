@@ -10,7 +10,6 @@ var options   = {
   path: '/api/1.0/messages/send.json',
   method: 'POST'
 };
-var emailBodyFile = 'email.html'
 
 ///////////////////////////////////////////////////
 
@@ -18,17 +17,13 @@ var mandrill        = require('mandrill-api/mandrill');
 var mandrill_client = new mandrill.Mandrill(apiKey);
 var fs              = require('fs');
 
-var mandrill = function (santaToChild, contactBook) {
+var mandrill = function (santaToChild, contactBook, emailSubject, emailBody) {
   this.santaToChild = santaToChild
   this.contactBook  = contactBook
-  this.result = 'No errors, successfully sent emails.'
+  this.emailSubject = emailSubject
+  this.emailBody    = emailBody
+  this.result       = 'No errors, successfully sent emails.'
 };
-
-fs.readFile(emailBodyFile, 'utf8', function (err,data) {
-  if (err) throw new Error('Unable to read email body file.')
-  emailBody = data
-});
-
 
 mandrill.prototype.sendEmails = function () {
 
@@ -37,7 +32,6 @@ mandrill.prototype.sendEmails = function () {
     var childName = this.santaToChild[santa]
     var santasEmail = this.contactBook[santa]
     // there should be a better way to do this, i.e. feed arguments into html file? 
-    var finalEmailBody = emailBody.replace('{childName}', childName);
     var message = {
       "from_email": fromEmail,
       "to": [
@@ -48,12 +42,13 @@ mandrill.prototype.sendEmails = function () {
         },
       ],
       "autotext": "true",
-      "subject": "SECRET SANTA! You're giving a gift to: " + childName + "!",
-      "html": finalEmailBody
+      "subject": this.emailSubject,
+      "html": "<html><body><p><strong>You're giving a gift to: " + childName + "!</strong></p>" + this.emailBody + "</body></html>"
     };
 
     mandrill_client.messages.send({"message": message}, function(result) {
       this.result = result;
+      console.log("completed sending email to " + santasEmail)
     }, function(e) {
       this.result = e.name
       console.log("error result: " + this.result);

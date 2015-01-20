@@ -2,9 +2,7 @@
 <html>
   <head>
     <link href="css/main.css" rel="stylesheet" type="text/css">
-    <link href='http://fonts.googleapis.com/css?family=Monoton|Open+Sans:800italic,800|Rokkitt|Maven+Pro' rel='stylesheet' type='text/css'> 
-
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
       
   </head>
 
@@ -13,7 +11,7 @@
     <div class="splash">
       <div class="splash_small">ASSIGN</div>
       <div class="splash_big">SECRET SANTAS</div>
-      <div class="splash_small">AMONGST YOUR FRIENDS</div>
+      <div class="splash_small">AMONGST YOUR FRIENDS!</div>
     </div>
 
     <div class="howto">
@@ -30,7 +28,7 @@
 
     <div id="form">
       <p style="text-align:center">Enter in name and email, separated by a colon. 
-        <br />For example: "Santa:santa.claus@northpole.np" 
+        <br />For example: "SantaClaus:santa.claus@northpole.np" 
       </p>
       
       <div id="form_left">
@@ -40,11 +38,14 @@
       <div id="form_right">
         <form class="multi-field-form" action="/submit" method="POST">
           <div class="input_fields_wrap">
+            <div><textarea id="email_subject" name="email_subject" class="email_subject" rows="1" cols="40" placeholder="Email Subject" required></textarea></div>
+            <div><textarea id="email_body" name="email_body" class="email_body" rows="5" cols="40" placeholder="Email Body. Write it in HTML if you want - any formatting otherwise will not be saved. But if you do, leave out the <html> and <body> tags." required></textarea></div>
+            <hr>
             <div>
-              <input type="text" name="peeps[]" placeholder="name:email" class="peep_input" pattern ="^([a-zA-Z0-9\._-])+:+([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$" required\>
+              <input type="text" name="peeps[]" placeholder="Friend:FriendEmail" class="peep_input" pattern ="^([a-zA-Z0-9\._-])+:+([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$" required />
             </div>
           </div>
-          <button class="submit_santa_button" id="submit" type="submit"/>SECRET SANTA TIME!</button>
+          <button class="submit_santa_button" id="submit" type="submit" style="margin-top: 4px" />SECRET SANTA TIME!</button>
         </form>
         <p class="validation_message"></p>
       </div>
@@ -74,7 +75,7 @@
         e.preventDefault();
         if (x < max_fields) {
           x++; // text box increment
-          $(wrapper).append('<div><input type="text" name="peeps[]" placeholder="name:email" class="peep_input" pattern ="^([a-zA-Z0-9])+:+([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$" required/> <img src="img/white-minus.png" href="#" class="remove_field"></img></div>'); // add input box
+          $(wrapper).append('<div><input type="text" name="peeps[]" placeholder="Friend:FriendEmail" class="peep_input" pattern ="^([a-zA-Z0-9])+:+([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$" required/> <img src="img/white-minus.png" href="#" class="remove_field"></img></div>'); // add input box
         }
       });
 
@@ -89,7 +90,7 @@
       var inputs = $("input[class=peep_input]");
       var namesArray = inputs.map( function() { return $(this).val(); }).get();
       if (Object.keys(namesArray).length > 1) return;
-      $(".validation_message").text( "Add a friend before submitting" ).show();
+      $(".validation_message").text( "Add a friend before submitting!" ).show();
       event.preventDefault();
     });
 
