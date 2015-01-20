@@ -43,13 +43,14 @@ mandrill.prototype.sendEmails = function () {
       ],
       "autotext": "true",
       "subject": this.emailSubject,
-      "html": "<html><body><p><strong>You're giving a gift to: " + childName + "!</strong></p>" + this.emailBody + "</body></html>"
+      "html": "<html><body><p><strong>You're giving a gift to: " + childName + "!</strong></p>" + this.emailBody + "<p>This message was made possible by <a href='https://github.com/wickyvinn/secret-santa'>wickyvinn's secret santa app!</a> </p></body></html>"
     };
 
     mandrill_client.messages.send({"message": message}, function(result) {
       this.result = result;
       console.log("completed sending email to " + santasEmail)
     }, function(e) {
+      // instead, throw a 400.
       this.result = e.name
       console.log("error result: " + this.result);
     });

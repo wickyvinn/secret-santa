@@ -2,37 +2,33 @@
 <html>
   <head>
     <link href="css/finish.css" rel="stylesheet" type="text/css">
-    <link href='http://fonts.googleapis.com/css?family=Monoton|Open+Sans:800italic,800|Rokkitt|Maven+Pro' rel='stylesheet' type='text/css'> 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script type="text/javascript"></script>
   </head>
 
   <body>
-    <div class="text">
-      You're all set! Emails to your friends will be sent shortly.
-        <br />
-        <br />If you MUST know, you can click below reveal who got who. 
-        <br />Once you leave this page though, that data will be gone.
-      </p>
-      <button class="reveal_button">I MUST KNOW</button>
-      <p class="show_the_santas"></p>
+    <div class="text"> You're all set! Emails to your friends will be sent shortly. FYI, you may have to check your spam or promotions folder. 
+      <br />
+      <br />If you MUST know, you can click below reveal who got who. 
+      <br />Once you leave this page, that data will be gone.
+
+      <div><button class="reveal_button">I MUST KNOW</button></div>
+    </div>
+    <div class="show_the_santas_area">
+      <div class="show_the_santas">
+        <div class="show_the_santas_header">SANTAS to RECIEPIENTS</div>
+        <% for (santa in santaToChild) {%>
+         <div class="individual_row_santas" style="text-align:center;"><%= santa %><img src="img/pinkarrow.png" style="width: auto; height: 10px; margin: 0 3px 0 3px"></img><%= santaToChild[santa] %>
+        <% } %></div>
+      </div>
     </div>
 	</body>
 
 
   <script>
-    // $(".reveal_button").click(function (data) {
-    //   var show_santas = $(".show_the_santas")
-
-    //   for (var santa in data) {
-    //     if (data.hasOwnProperty(santa)) {
-    //       console.log(santa + " -> " + data[santa]);
-    //     }
-    //   }
-
-    //   for (var santa in data) {
-    //     show_santas.text(santa).show();
-    //   }
-
-    // });
+    $(".reveal_button").click(function () {
+      $(".show_are_you_sure_message").fadeIn();
+      $(".show_the_santas_area").fadeIn();
+    });
   </script>
 </html>

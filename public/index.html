@@ -32,7 +32,7 @@
       </p>
       
       <div id="form_left">
-        <button class="add_field_button">ADD FRIEND</button>  
+        <button class="add_field_button">ADD FRIEND</button>
       </div>
       
       <div id="form_right">
@@ -49,7 +49,6 @@
         </form>
         <p class="validation_message"></p>
       </div>
-
     </div>
 
     <div id="credits"> 
@@ -60,8 +59,6 @@
   </body>
 
   <script>
-
-
 
     //////////// dynamically add input for adding santas ////////////
 
@@ -86,6 +83,7 @@
     });
   
     //////////// validate that there are at least two inputs ////////////
+
     $("form.multi-field-form").submit(function (event) {
       var inputs = $("input[class=peep_input]");
       var namesArray = inputs.map( function() { return $(this).val(); }).get();

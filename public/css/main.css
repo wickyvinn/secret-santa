@@ -4,7 +4,7 @@ body {
 
 .splash {
   display: block;
-  padding: 150px 0 150px;
+  padding: 150px 0 180px;
   text-align: center;
   background: linear-gradient(45deg, #CCEBF5 0%,#FEFEFE 100%)
 }

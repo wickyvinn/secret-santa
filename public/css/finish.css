@@ -9,7 +9,7 @@ body {
 }
 
 .text {
-	padding: 150px 0 150px 0;
+	padding: 200px 0 200px 0;
 }
 
 .reveal_button {
@@ -22,6 +22,7 @@ body {
   border: solid;
   border-color: #FFFFFF;
   padding: 10px 5px 10px 5px;
+  margin-top: 20px;
 }
 
 .reveal_button:hover {
@@ -37,3 +38,33 @@ body {
   padding: 10px 5px 10px 5px;
 }
 
+.show_the_santas_area {
+  display: none;
+  padding: 150px 0 150px 0;
+  overflow: auto;
+  background: linear-gradient(45deg, #66A366 0%, #006600 100%);
+  font-size: 12px;
+  color: #FFFFFF;
+}
+
+.show_the_santas_header {
+  margin: 5px 0 30px 0;
+  font-size: 30px;
+  font-family: Rokkitt;
+} 
+
+.show_the_santas {
+  font-size: 20px;
+  font-family: WisdomScript;
+  text-align: center;
+}
+
+@font-face {
+  font-family: "Rokkitt";
+  src: url("Rokkitt-Regular.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: WisdomScript;
+  src: url("WisdomScript.otf") format("opentype");
+}
