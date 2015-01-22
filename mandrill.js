@@ -2,7 +2,7 @@
 //////////////// Mandrill Settings ////////////////
 ///////////////////////////////////////////////////
 
-var apiKey    = 'Z-72jAyAFPIYUJnbEfzISQ'
+var apiKey    = 'XXXXXXXXXXXXXXX'
 var fromEmail = 'leslothlistens@gmail.com'
 var options   = {
   host: 'www.mandrillapp.com',  
